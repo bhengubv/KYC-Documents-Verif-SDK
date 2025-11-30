@@ -16,7 +16,7 @@ KycVerifDetection-SDK public header
 
 #define KYC_VERIF_SDK_VERSION_MAJOR		0
 #define KYC_VERIF_SDK_VERSION_MINOR		0
-#define KYC_VERIF_SDK_VERSION_MICRO		1
+#define KYC_VERIF_SDK_VERSION_MICRO		14
 
 // Windows's symbols export
 #if defined(SWIG)
@@ -45,11 +45,11 @@ KycVerifDetection-SDK public header
 #		include <android/asset_manager.h>
 #		include <jni.h>
 #	endif
-#	define KYC_VERIF_SDK_PRINT_VERBOSE(FMT, ...) __android_log_print(ANDROID_LOG_VERBOSE, "org.doubango.ultimateAlpr.Sdk", "*[KYC_VERIF_SDK VERBOSE]: " FMT "\n", ##__VA_ARGS__)
-#	define KYC_VERIF_SDK_PRINT_INFO(FMT, ...) __android_log_print(ANDROID_LOG_INFO, "org.doubango.ultimateAlpr.Sdk", "*[KYC_VERIF_SDK INFO]: " FMT "\n", ##__VA_ARGS__)
-#	define KYC_VERIF_SDK_PRINT_WARN(FMT, ...) __android_log_print(ANDROID_LOG_WARN, "org.doubango.ultimateAlpr.Sdk", "**[KYC_VERIF_SDK WARN]: function: \"%s()\" \nfile: \"%s\" \nline: \"%u\" \nmessage: " FMT "\n", __FUNCTION__,  __FILE__, __LINE__, ##__VA_ARGS__)
-#	define KYC_VERIF_SDK_PRINT_ERROR(FMT, ...) __android_log_print(ANDROID_LOG_ERROR, "org.doubango.ultimateAlpr.Sdk", "***[KYC_VERIF_SDK ERROR]: function: \"%s()\" \nfile: \"%s\" \nline: \"%u\" \nmessage: " FMT "\n", __FUNCTION__,  __FILE__, __LINE__, ##__VA_ARGS__)
-#	define KYC_VERIF_SDK_PRINT_FATAL(FMT, ...) __android_log_print(ANDROID_LOG_FATAL, "org.doubango.ultimateAlpr.Sdk", "****[KYC_VERIF_SDK FATAL]: function: \"%s()\" \nfile: \"%s\" \nline: \"%u\" \nmessage: " FMT "\n", __FUNCTION__,  __FILE__, __LINE__, ##__VA_ARGS__)
+#	define KYC_VERIF_SDK_PRINT_VERBOSE(FMT, ...) __android_log_print(ANDROID_LOG_VERBOSE, "org.doubango.kycVerif.Sdk", "*[KYC_VERIF_SDK VERBOSE]: " FMT "\n", ##__VA_ARGS__)
+#	define KYC_VERIF_SDK_PRINT_INFO(FMT, ...) __android_log_print(ANDROID_LOG_INFO, "org.doubango.kycVerif.Sdk", "*[KYC_VERIF_SDK INFO]: " FMT "\n", ##__VA_ARGS__)
+#	define KYC_VERIF_SDK_PRINT_WARN(FMT, ...) __android_log_print(ANDROID_LOG_WARN, "org.doubango.kycVerif.Sdk", "**[KYC_VERIF_SDK WARN]: function: \"%s()\" \nfile: \"%s\" \nline: \"%u\" \nmessage: " FMT "\n", __FUNCTION__,  __FILE__, __LINE__, ##__VA_ARGS__)
+#	define KYC_VERIF_SDK_PRINT_ERROR(FMT, ...) __android_log_print(ANDROID_LOG_ERROR, "org.doubango.kycVerif.Sdk", "***[KYC_VERIF_SDK ERROR]: function: \"%s()\" \nfile: \"%s\" \nline: \"%u\" \nmessage: " FMT "\n", __FUNCTION__,  __FILE__, __LINE__, ##__VA_ARGS__)
+#	define KYC_VERIF_SDK_PRINT_FATAL(FMT, ...) __android_log_print(ANDROID_LOG_FATAL, "org.doubango.kycVerif.Sdk", "****[KYC_VERIF_SDK FATAL]: function: \"%s()\" \nfile: \"%s\" \nline: \"%u\" \nmessage: " FMT "\n", __FUNCTION__,  __FILE__, __LINE__, ##__VA_ARGS__)
 #else
 #	define KYC_VERIF_SDK_PRINT_VERBOSE(FMT, ...) fprintf(stderr, "*[KYC_VERIF_SDK VERBOSE]: " FMT "\n", ##__VA_ARGS__)
 #	define KYC_VERIF_SDK_PRINT_INFO(FMT, ...) fprintf(stderr, "*[KYC_VERIF_SDK INFO]: " FMT "\n", ##__VA_ARGS__)
@@ -246,7 +246,7 @@ namespace KycVerif
 #else
 		/*! Initializes the engine. This function must be the first one to call.
 			\param jsonConfig JSON string containing configuration entries. May be null. More info at https://www.doubango.org/SDKs/kyc-documents-verif/docs/Configuration_options.html
-			\param parallelDeliveryCallback \ref KycVerifSdkParallelDeliveryCallback "callback" function to enable parallel mode. Use null value to use sequential instead of parallel mode. More info at https://www.doubango.org/SDKs/kyc-documents-verif/docs/Parallel_versus_sequential_processing.html.
+			\param parallelDeliveryCallback \ref KycVerifSdkParallelDeliveryCallback "callback" function to enable inter parallel mode. Use nullptr value to use sequential instead of parallel mode. More info at https://www.doubango.org/SDKs/kyc-documents-verif/docs/Parallel_processing.html#inter-processing.
 			\returns a \ref KycVerifSdkResult "result"
 		*/
 		static KycVerifSdkResult init(const char* jsonConfig = nullptr, const KycVerifSdkParallelDeliveryCallback* parallelDeliveryCallback = nullptr);

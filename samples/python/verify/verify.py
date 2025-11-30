@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     # Initialize the engine
     checkResult("Init", 
-                KycVerifSdk.KycVerifSdkEngine_init(json.dumps(JSON_CONFIG))
+                KycVerifSdk.KycVerifSdkEngine.init(json.dumps(JSON_CONFIG))
                )
 
     # Process
@@ -107,7 +107,7 @@ if __name__ == "__main__":
     # once and do all the processing you need, then deinitialize it.
     with open(args.image, 'rb') as file:
         checkResult("Process",
-                    KycVerifSdk.KycVerifSdkEngine_process(
+                    KycVerifSdk.KycVerifSdkEngine.process(
                         file.read(),
                         os.fstat(file.fileno()).st_size
                         )
@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
     # DeInit the engine
     checkResult("DeInit", 
-                KycVerifSdk.KycVerifSdkEngine_deInit()
+                KycVerifSdk.KycVerifSdkEngine.deInit()
                )
     
     
